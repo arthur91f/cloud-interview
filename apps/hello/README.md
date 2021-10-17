@@ -11,3 +11,7 @@
 ## How to display
 
 1. <http://localhost:3000>
+
+## How to build docker image
+
+1. docker build -t ornikar-hello .
