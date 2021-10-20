@@ -1,0 +1,32 @@
+## Use local chart front
+
+#############
+## General ##
+name: ornikar-hello
+namespace: default
+
+#############
+## Ingress ##
+ingress:
+  host: ornikar.dev
+  path: /hello
+  pathType: Exact
+
+#############
+## Service ##
+service:
+  port: 3000
+
+################
+## Deployment ##
+deployment:
+  # Mandatory
+  replicas: 2
+  resources:
+    limits:
+      cpu: 100m
+      memory: 50Mi
+    requests:
+      cpu: 10m
+      memory: 50Mi
+  imagePullPolicy: Never

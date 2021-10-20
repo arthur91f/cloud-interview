@@ -1,0 +1,20 @@
+## Use local chart front
+
+#############
+## General ##
+name: ornikar-world
+
+#############
+## Ingress ##
+ingress:
+  path: /world
+
+#############
+## Service ##
+service:
+  port: 3000
+
+################
+## Deployment ##
+deployment:
+  imagePullPolicy: Never
