@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}
+
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  replicas: {{ .Values.deployment.replicas }}
+  minReadySeconds: 10
+  {{- if .Values.deployment.strategy }}
+  strategy: {{- toYaml .Values.deployment.strategy | nindent 4 }}
+  {{- else }}
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 33%
+  {{- end }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+
+        {{- if .Values.deployment.image }}
+        image: {{ .Values.deployment.image }}
+        {{- else }}
+        image: {{ .Values.name }}:latest
+        {{- end }}
+
+        {{- if .Values.deployment.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+        {{- else }}
+        imagePullPolicy: Always
+        {{- end }}
+
+        resources: {{- toYaml .Values.deployment.resources | nindent 10 }}

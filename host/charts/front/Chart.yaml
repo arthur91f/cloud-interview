@@ -1,0 +1,10 @@
+apiVersion: v2
+name: front
+description: Standard front
+type: application
+
+# chart version
+version: 0.1.0
+
+# app version
+appVersion: 1.16.0
