@@ -1,4 +1,4 @@
-# TITLE
+# INSTRUCTION
 The project runs on a virtualbox VMs based on ubuntu20.04
 
 ## Create the VM
@@ -50,4 +50,4 @@ Once the VMs has been created set up some configuration:
 ### Install tools
 - connect on ssh to that VM
 - copy paste 1-install_minikube.sh in the shell
-- 
+- copy paste 2-pop_environnement in the shell
