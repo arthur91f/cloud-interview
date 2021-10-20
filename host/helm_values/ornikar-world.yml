@@ -3,11 +3,14 @@
 #############
 ## General ##
 name: ornikar-world
+namespace: default
 
 #############
 ## Ingress ##
 ingress:
+  host: ornikar.dev
   path: /world
+  pathType: Exact
 
 #############
 ## Service ##
@@ -17,4 +20,13 @@ service:
 ################
 ## Deployment ##
 deployment:
+  # Mandatory
+  replicas: 2
+  resources:
+    limits:
+      cpu: 100m
+      memory: 50Mi
+    requests:
+      cpu: 10m
+      memory: 50Mi
   imagePullPolicy: Never
