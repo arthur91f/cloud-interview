@@ -1,0 +1,12 @@
+## use chart traefik/traefik
+# https://github.com/traefik/traefik-helm-chart
+
+service:
+  type: NodePort
+  # type: LoadBalancer
+  # externalIPs:
+  #   - 192.168.49.200
+
+ports:
+  web:
+    exposedPort: 3000
