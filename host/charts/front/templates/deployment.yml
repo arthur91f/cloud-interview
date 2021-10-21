@@ -41,5 +41,7 @@ spec:
         {{- else }}
         imagePullPolicy: Always
         {{- end }}
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}
 
         resources: {{- toYaml .Values.deployment.resources | nindent 10 }}

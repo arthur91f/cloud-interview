@@ -12,3 +12,4 @@ spec:
   ports:
   - port: {{ .Values.service.port }}
     name: {{ .Values.name }}
+    targetPort: {{ .Values.deployment.containerPort }}

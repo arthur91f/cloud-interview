@@ -14,7 +14,7 @@ echo "sources getted" || (echo "fail to get sources" ; exit 1 )
 helm repo add traefik https://helm.traefik.io/traefik &&
 helm repo update &&
 cd cloud-interview/host &&
-helm install -f helm_values/traefik.yml traefik traefik/traefik &&
+helm install -f traefik.yml --set service.externalIPs[0]=$(minikube ip) traefik traefik/traefik &&
 echo "helm started" || (echo "traefik failed to install" ; exit 1 )
 
 ## DEPLOY APP  ----------------------------------------------------------------
@@ -41,6 +41,8 @@ for app in hello world ; do
   install_app $app
   echo "----------"
 done
+
+helm upgrade -f traefik.yml --set service.externalIPs[0]=$(minikube ip) traefik traefik/traefik
 
 # helm upgrade -f helm_values/traefik.yml traefik traefik/traefik
 # helm upgrade -f helm_values/ornikar-hello.yml ornikar-hello charts/front

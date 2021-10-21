@@ -27,6 +27,7 @@ deployment:
     requests:
       cpu: 10m
       memory: 50Mi
+  containerPort: 3000
   # Optionnal
   # image: ${name}:latest # here app-i:latest 
   # strategy:

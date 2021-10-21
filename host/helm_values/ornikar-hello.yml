@@ -15,7 +15,7 @@ ingress:
 #############
 ## Service ##
 service:
-  port: 3000
+  port: 80
 
 ################
 ## Deployment ##
@@ -30,3 +30,5 @@ deployment:
       cpu: 10m
       memory: 50Mi
   imagePullPolicy: Never
+  containerPort: 3000
+  
